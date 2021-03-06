@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 app.use(cors())
 const port = 5000
 
+app.get('/', (req, res) =>{
+  res.send("It's working")
+})
+
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
@@ -27,9 +31,7 @@ client.connect(err => {
     })
   })
 
-  app.get('/', (req, res) =>{
-    res.send("It's working")
-  })
+  
   
   app.get('/products', (req, res) => {
     productsCollection.find({})
